@@ -16,7 +16,7 @@ module.exports = async (email, subject, text) => {
             from: "auctionbyintocode11@gmail.com",
             to: String(email),
             subject: String(subject),
-            text: text,
+            html: `<a href=${text}>${text}</a>`
         })
         console.log('Email sent successfully')
     } catch (error) { 
