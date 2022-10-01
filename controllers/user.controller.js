@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const { read } = require("fs");
 
 module.exports.user = {
   getUsers: async (req, res) => {
@@ -107,4 +108,13 @@ module.exports.user = {
       res.status(500).send({ message: "Internal Server Error" });
     }
   },
+  updateUser: async (req, res) => {
+    const data = await User.findByIdAndUpdate(req.params.id, req.body);
+    res.json(data);
+  },
+  buyProductByUser: async (req, res) => {
+    const data = await User.findByIdAndUpdate(req.params.id, {$addToSet: {purchasedProduct: req.body.productId}});
+    // Найти продукт, найти юзера, отнять цену продукта от кошелька юзера (перед этим сделав проверку что такое возможно) - TODO
+    res.json(data)
+  }
 };
