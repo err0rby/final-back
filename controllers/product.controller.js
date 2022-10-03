@@ -15,6 +15,7 @@ module.exports.productController = {
 
       category: req.body.category,
 
+      name: req.body.name,
       private: req.body.private,
       description: req.body.description,
       priceStart: req.body.priceStart,

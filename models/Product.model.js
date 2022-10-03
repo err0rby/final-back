@@ -8,6 +8,7 @@ const productSchema = mongoose.Schema({
     ref: "Category",
   },
 
+  name: String,
   private: Boolean,
   description: String,
   priceStart: Number,
