@@ -24,6 +24,10 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
+
+  socket.on("send", (data) => {
+    io.emit("receive", data)
+  })
 })
 
 mongoose
