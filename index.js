@@ -25,7 +25,7 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
 
-  socket.on("send", (data) => {
+  socket.on("disp_pat", (data) => {
     io.emit("receive", data)
   })
 })
