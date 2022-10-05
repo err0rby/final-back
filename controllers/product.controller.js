@@ -28,4 +28,13 @@ module.exports.productController = {
     });
     await res.json(data);
   },
+
+  patchProd: async (req, res) => {
+    try {
+      const data = await Product.findByIdAndUpdate(req.params.id, { $set: { priceStart: req.body.priceStart } }, { new: true });
+      res.json(data);
+    } catch (error) {
+      res.json(error);
+    }
+  }
 };
