@@ -2,7 +2,7 @@ const Product = require("../models/Product.model");
 
 module.exports.productController = {
   getProduct: async (req, res) => {
-    const data = await Product.find();
+    const data = await Product.find().populate('bet')
     await res.json(data);
   },
   getProductId: async (req, res) => {
@@ -35,6 +35,15 @@ module.exports.productController = {
       res.json(data);
     } catch (error) {
       res.json(error);
+    }
+  },
+
+  pushUser: async (req, res) => {
+    try {
+      const data = await Product.findByIdAndUpdate(req.params.id, { $push: { bet: req.body.user } }, { new: true });
+      res.json(data);
+    } catch (error) {
+      res.json(error)
     }
   }
 };

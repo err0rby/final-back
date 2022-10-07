@@ -28,13 +28,19 @@ io.on("connection", (socket) => {
   socket.on("disp_pat", (data) => {
     io.emit("receive", data)
   })
-})
+});
 
-mongoose
-  .connect(process.env.MONGO_SERVER)
-  .then(() => console.log("Успешное подключение к MongoDB!"))
-  .catch(() => console.log("Ошибка при подключении к MongoDB!"));
+const start = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_SERVER)
+    console.log("Успешное подключение к MongoDB!")
+  } catch (error) {
+    console.log("Ошибка при подключении к MongoDB!")
+  }
+}
 
 server.listen(process.env.SERVER_PORT, () => {
   console.log(`Сервер на порту: ${process.env.SERVER_PORT} успешно запущен!`);
 });
+
+start();
