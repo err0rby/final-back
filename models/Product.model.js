@@ -13,13 +13,17 @@ const productSchema = mongoose.Schema({
   description: String,
   priceStart: Number,
   priceFinal: Number,
-  
+
   timer: Number,
   timeNow: Number,
 
-  bet: [],
+  bet: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'User'
+    }
+  ],
 }, { timestamps: true });
 
 const Product = mongoose.model("Product", productSchema);
-
 module.exports = Product;
