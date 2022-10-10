@@ -7,5 +7,6 @@ router.get('/Product/:id', productController.getProduct);
 router.post('/Product', productController.postProduct);
 router.patch('/Product/pat/:id', productController.patchProd);
 router.patch('/Product/arr/:id', productController.winner);
+router.patch('/Product/members/:id', productController.addUserLikeAuictionMember);
 
 module.exports = router;
