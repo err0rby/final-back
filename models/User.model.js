@@ -10,14 +10,14 @@ const userSchema = mongoose.Schema({
     default: false,
   },
   purchasedProduct: [
-    { type: mongoose.SchemaTypes.ObjectId, ref: "Product"},
+    { type: mongoose.SchemaTypes.ObjectId, ref: "Product" },
   ],
-  ban: {type: Boolean, default: false},
-  role: {type: String, default: "USER"},
+  ban: { type: Boolean, default: false },
+  role: { type: String, default: "USER" },
   wallet: {
-    type:Number,
-    default:0
-}
+    type: Number,
+    default: 0
+  }
 });
 
 const User = mongoose.model("User", userSchema);

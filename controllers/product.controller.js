@@ -2,7 +2,7 @@ const Product = require("../models/Product.model");
 
 module.exports.productController = {
   getProduct: async (req, res) => {
-    const data = await Product.find();
+    const data = await Product.find().populate('bet')
     await res.json(data);
   },
   getProductId: async (req, res) => {
@@ -32,6 +32,15 @@ module.exports.productController = {
   patchProd: async (req, res) => {
     try {
       const data = await Product.findByIdAndUpdate(req.params.id, { $set: { priceStart: req.body.priceStart } }, { new: true });
+      res.json(data);
+    } catch (error) {
+      res.json(error);
+    }
+  },
+
+  winner: async (req, res) => {
+    try {
+      const data = await Product.findByIdAndUpdate(req.params.id, { $set: { bet: req.body.bet } }, { new: true }).populate('bet');
       res.json(data);
     } catch (error) {
       res.json(error);
