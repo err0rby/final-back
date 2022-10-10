@@ -1,3 +1,4 @@
+
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
@@ -11,6 +12,32 @@ app.use(express.json());
 app.use(require("./routes/category.route"));
 app.use(require("./routes/product.route"));
 app.use(require('./routes/user.route'));
+
+//AdminBro
+const AdminBro = require('admin-bro')
+const expressAdminBro = require('@admin-bro/express')
+const mongooseAdminBro = require('@admin-bro/mongoose')
+
+//AdminBroModels
+const User = require('./models/User.model')
+const Category = require('./models/Category.model')
+const Product = require('./models/Product.model')
+
+
+
+AdminBro.registerAdapter(mongooseAdminBro)
+const AdminBroOptions = {resources: [User, Category, Product], options: {
+  
+}}
+
+const adminBro = new AdminBro(AdminBroOptions)
+const router = expressAdminBro.buildRouter(adminBro)
+app.use(adminBro.options.rootPath, router)
+
+app.get('/admin', (req, res)=>{
+  // res.send('Dashboard con Node')
+})
+
 
 const server = http.createServer(app);
 
