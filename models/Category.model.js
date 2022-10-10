@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const categorySchema = mongoose.Schema({
   image: String,
-  
   title: String,
   description: String,
   century: String

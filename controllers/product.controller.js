@@ -37,10 +37,17 @@ module.exports.productController = {
       res.json(error);
     }
   },
-
   winner: async (req, res) => {
     try {
       const data = await Product.findByIdAndUpdate(req.params.id, { $set: { bet: req.body.bet } }, { new: true }).populate('bet');
+      res.json(data);
+    } catch (error) {
+      res.json(error);
+    }
+  },
+  addUserLikeAuictionMember: async (req, res) => {
+    try {
+      const data = await Product.findByIdAndUpdate(req.params.id, { $addToSet: { members: req.body.userId } }, { new: true });
       res.json(data);
     } catch (error) {
       res.json(error);

@@ -13,10 +13,11 @@ const productSchema = mongoose.Schema({
   description: String,
   priceStart: Number,
   priceFinal: Number,
-
-  timer: Number,
-  timeNow: Number,
-
+  auctionStart: String,
+  auctionEnd: String,
+  members: [{    
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'User'}],
   bet:
   {
     type: mongoose.SchemaTypes.ObjectId,
