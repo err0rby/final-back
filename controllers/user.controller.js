@@ -96,7 +96,7 @@ module.exports.user = {
         token: crypto.randomBytes(32).toString("hex"),
       }).save();
 
-      const url = `http://localhost:3002/user/${user._id}/verify/${token.token}`;
+      const url = `http://localhost:3000/user/${user._id}/verify/${token.token}`;
       await sendEmail(
         user.email,
         `Dear ${user.lastName} ${user.firstName}, pleace verify your account.`,

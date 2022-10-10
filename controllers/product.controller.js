@@ -38,12 +38,12 @@ module.exports.productController = {
     }
   },
 
-  pushUser: async (req, res) => {
+  winner: async (req, res) => {
     try {
-      const data = await Product.findByIdAndUpdate(req.params.id, { $push: { bet: req.body.user } }, { new: true });
+      const data = await Product.findByIdAndUpdate(req.params.id, { $set: { bet: req.body.bet } }, { new: true }).populate('bet');
       res.json(data);
     } catch (error) {
-      res.json(error)
+      res.json(error);
     }
   }
 };

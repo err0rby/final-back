@@ -17,12 +17,11 @@ const productSchema = mongoose.Schema({
   timer: Number,
   timeNow: Number,
 
-  bet: [
-    {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'User'
-    }
-  ],
+  bet:
+  {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'User'
+  },
 }, { timestamps: true });
 
 const Product = mongoose.model("Product", productSchema);

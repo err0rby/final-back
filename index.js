@@ -27,7 +27,12 @@ io.on("connection", (socket) => {
 
   socket.on("disp_pat", (data) => {
     io.emit("receive", data)
+  });
+
+  socket.on("disp_us", (data) => {
+    io.emit("receive_us", data)
   })
+
 });
 
 const start = async () => {
