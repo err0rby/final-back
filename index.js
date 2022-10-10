@@ -1,3 +1,4 @@
+
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
@@ -25,7 +26,9 @@ const Product = require('./models/Product.model')
 
 
 AdminBro.registerAdapter(mongooseAdminBro)
-const AdminBroOptions = {resources: [User, Category, Product]}
+const AdminBroOptions = {resources: [User, Category, Product], options: {
+  
+}}
 
 const adminBro = new AdminBro(AdminBroOptions)
 const router = expressAdminBro.buildRouter(adminBro)
