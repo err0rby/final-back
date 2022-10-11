@@ -23,11 +23,23 @@ const User = require('./models/User.model')
 const Category = require('./models/Category.model')
 const Product = require('./models/Product.model')
 
+//...
+// const adminBro = new AdminBro({
+//   rootPath: '/xyz-admin',
+//   logoutPath: '/xyz-admin/exit',
+//   loginPath: '/xyz-admin/sign-in',
+//   databases: [mongooseConnection],
+//   resources: [{ resource: ArticleModel, options: {...}}],
+//   branding: {
+//     companyName: 'XYZ c.o.',
+//   },
+// })
 
 
 AdminBro.registerAdapter(mongooseAdminBro)
 const AdminBroOptions = {resources: [User, Category, Product], options: {
-  
+}, branding: {
+  logo: "https://lyonturnbull.blob.core.windows.net/site-images/LT_Logo.png"
 }}
 
 const adminBro = new AdminBro(AdminBroOptions)
