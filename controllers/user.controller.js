@@ -8,7 +8,7 @@ const { read } = require("fs");
 
 module.exports.user = {
   getUsers: async (req, res) => {
-    const data = await User.find({});
+    const data = await User.find({}).populate('purchasedProduct');
     res.json(data);
   },
   verifyUser: async (req, res) => {
