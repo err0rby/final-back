@@ -37,9 +37,11 @@ module.exports.user = {
   loginUser: async (req, res) => {
     const { email, password } = req.body;
     const candidate = await User.findOne({ email });
+
     if (!candidate) {
-      return res.status(401).send({ message: "User not find!" });
+      return res.status(401).json({ message: "User not find!" });
     }
+
     const valid = await bcrypt.compare(password, candidate.password);
     if (!valid) {
       return res.status(401).send({ message: "Wrong password!" });
@@ -70,6 +72,7 @@ module.exports.user = {
     const token = await jwt.sign(payload, process.env.SECRET_JWT, {
       expiresIn: "95h",
     });
+
     res.json({
       token,
       id: candidate._id,
