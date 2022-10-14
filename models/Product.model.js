@@ -21,7 +21,8 @@ const productSchema = mongoose.Schema({
   bet:
   {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    default: null
   },
 }, { timestamps: true });
 
