@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
@@ -6,6 +5,8 @@ const app = express();
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require("cors");
+const path = require("path");
+const morgan = require("morgan");
 
 app.use(cors());
 app.use(express.json());
@@ -23,7 +24,9 @@ const User = require('./models/User.model')
 const Category = require('./models/Category.model')
 const Product = require('./models/Product.model')
 
-//...
+app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "public")));
+
 // const adminBro = new AdminBro({
 //   rootPath: '/xyz-admin',
 //   logoutPath: '/xyz-admin/exit',
