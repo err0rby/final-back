@@ -86,8 +86,8 @@ const start = async () => {
   }
 }
 
-server.listen(process.env.SERVER_PORT, () => {
-  console.log(`Сервер на порту: ${process.env.SERVER_PORT} успешно запущен!`);
+server.listen(process.env.PORT, () => {
+  console.log(`Сервер на порту: ${process.env.PORT} успешно запущен!`);
 });
 
 start();
